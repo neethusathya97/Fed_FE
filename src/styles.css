@@ -1,0 +1,329 @@
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
+@import url('https://fonts.googleapis.com/css?family=Raleway&display=swap');
+/* Provide sufficient contrast against white background */
+
+a {
+  color: #0366d6;
+}
+
+code {
+  color: #e01a76;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 500;
+}
+
+h1, h2, h3, h4, h5, h6, b {
+  font-weight: bold;
+  font-family: 'Quicksand', sans-serif;
+}
+
+span, a {
+  font-family: 'Open Sans', sans-serif;
+}
+
+.hidden {
+  display: none !important;
+}
+
+blockquote {
+  border-left: 4px solid #9a9696;
+  padding: 9px 16px;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+.mat-checkbox-layout {
+  white-space: normal !important;
+  padding-top: 8px;
+}
+
+.mat-list-item-content {
+  flex-direction: column !important;
+}
+
+.container-fluid.main {
+  margin-top: 73px;
+}
+
+.mat-nav-list .mat-list-item {
+  height: auto !important;
+}
+
+.sortbox {
+  border: solid 1px #ccc;
+  overflow: hidden;
+}
+
+.sortlistitem {
+  border-bottom: solid 1px #ccc;
+  box-sizing: border-box;
+  background: white;
+}
+
+.cdk-drag-preview {
+  box-sizing: border-box;
+  border-radius: 4px;
+  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2), 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12);
+}
+
+.cdk-drag-animating {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.sortlistitem:last-child {
+  border: none;
+}
+
+.sortbox.cdk-drop-list-dragging .sortlistitem:not(.cdk-drag-placeholder) {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.custom-placeholder {
+  background: #ccc;
+  border: dotted 3px #999;
+  min-height: 100px;
+  min-width: 100% !important;
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+  margin-right: -15px;
+  margin-left: -15px;
+}
+
+.sortorderbtn {
+  max-width: 20px !important;
+  padding: 0px;
+  height: 100%;
+  background-color: #fafaff;
+  cursor: move;
+  overflow: hidden;
+  visibility: hidden;
+}
+
+.sortorderbtn i {
+  color: #bcbcbc;
+  font-size: 42px;
+  position: relative;
+  line-height: 49px;
+  margin: 0px;
+  padding: 0px;
+  left: -6px;
+}
+
+.sortlistitem:hover .sortorderbtn {
+  visibility: visible;
+}
+
+.rowhead {
+  border-bottom: 2px solid #1e2a6d;
+}
+
+.rowlist {
+  box-shadow: 0px 0px 4px -2px rgba(0, 0, 0, 0.45098039215686275);
+}
+
+.verticalcontent {
+  -webkit-writing-mode: vertical-lr;
+  -ms-writing-mode: tb-lr;
+  writing-mode: vertical-lr;
+  -webkit-transform: rotate(180deg);
+  transform: rotate(180deg);
+  -webkit-transform-origin: center center;
+  transform-origin: center center;
+}
+
+.equal {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.equal>[class*='col-'] {
+  display: flex;
+  flex-direction: column;
+}
+
+.newitemlabel {
+  max-width: 54px;
+}
+
+.checkBoxColumn {
+  max-width: 64px !Important;
+  text-align: center;
+}
+
+.actions {
+  text-align: right;
+  max-width: 150px !Important;
+}
+
+mat-form-field.ng-valid.ng-touched {
+  border-left: 3px solid #42A948;
+  /* green */
+}
+
+mat-form-field.ng-invalid.ng-touched {
+  border-left: 3px solid #a94442;
+  /* red */
+}
+
+mat-form-field {
+  padding-left: 15px;
+}
+
+button {
+  outline: none !important;
+}
+
+.actions .mat-badge-content {
+  background-color: #FFFFFF;
+  color: #631a14;
+  right: -7px !important;
+  top: -7px !important;
+}
+
+.actionbtn {
+  line-height: normal;
+}
+
+.actionbtn mat-icon {
+  font-size: 40px;
+}
+
+.deleterows mat-icon {
+  font-size: 30px;
+}
+
+button.actionbtn {
+  width: 48px;
+  height: 48px;
+}
+
+.actionbtn mat-icon {
+  width: auto;
+  height: auto;
+}
+
+.saverow {
+  color: #009688;
+}
+
+.nosaverow {
+  color: beige;
+}
+
+.editrow mat-icon {
+  font-size: 22px;
+  border: 3px solid #3f51b5;
+  border-radius: 20px;
+  width: 34px;
+  height: 34px;
+  line-height: 28px !important;
+}
+
+.deleterow mat-icon {
+  font-size: 25px;
+  border: 3px solid #ef3c2e;
+  border-radius: 20px;
+  width: 34px;
+  height: 34px;
+  line-height: 28px !important;
+}
+
+.success.mat-snack-bar-container {
+  background-color: #308c1f;
+  color: rgb(255, 255, 255);
+}
+
+.mat-simple-snackbar-action {
+  color: rgb(255, 255, 255);
+  font-weight: bold;
+}
+
+.success.mat-snack-bar-container .mat-simple-snackbar-action .mat-button-wrapper:after {
+  content: "\002714";
+}
+
+.error.mat-snack-bar-container {
+  background-color: #70120f;
+  color: rgb(255, 255, 255);
+}
+
+.error.mat-snack-bar-container .mat-simple-snackbar-action .mat-button-wrapper:after {
+  content: "\26A0";
+}
+
+.btn.shownewbox {
+  float: right;
+  min-width: 133px;
+  background-color: #3eb73d;
+  color: #FFFFFF;
+  font-size: 16px;
+  padding-bottom: 4px;
+  transition: 1s all;
+}
+
+.addcloseicon {
+  position: relative;
+  display: inline-block;
+  transform: rotate(45deg);
+  padding-right: 5px;
+  top: 1px;
+  padding-right: 5px;
+  transition: 1s transform;
+}
+
+.btn.closenewbox {
+  background-color: #206b1f;
+}
+
+.closenewbox .addcloseicon {
+  transform: rotate(0deg);
+  top: 0px;
+}
+
+.rowlist>*>div {
+  max-width: 300px;
+}
+
+mat-sidenav .mat-list-item-content {
+  padding: 0px !important;
+}
+
+.footer {
+  background-color: #3f51b5 !important;
+  position: absolute;
+  bottom: 0px;
+  box-shadow: 0 3px 5px -1px rgba(0, 0, 0, .2), 0 6px 10px 0 rgba(0, 0, 0, .14), 0 1px 18px 0 rgba(0, 0, 0, .12);
+}
+
+html, body {
+  display: block;
+  height: auto;
+}
+
+app-root body {
+  padding-bottom: 60px;
+  position: relative;
+  min-height: 100vh;
+}
+
+.mat-card-header-text {
+  width: 100%;
+}

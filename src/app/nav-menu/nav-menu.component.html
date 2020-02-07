@@ -1,0 +1,54 @@
+<header>
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light box-shadow mb-3 px-3 fixed-top">
+        <div class="container-fluid pl-0 pr-3">
+            <a mat-icon-button mat-ripple (click)="sidenav.toggle()">
+                <mat-icon>menu</mat-icon>
+            </a>
+            <a class="navbar-brand" [routerLink]="['/']"><img src="/assets/images/logo.png" />Federal Form Submission</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-label="Toggle navigation" [attr.aria-expanded]="isExpanded" (click)="toggle()">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+            <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse" [ngClass]="{ show: isExpanded }">
+                <ul class="navbar-nav flex-grow">
+                    <li class="nav-item" [routerLinkActive]="['link-active']">
+                        <a class="nav-link " [routerLink]="['/settings']" [queryParams]="{new: 'true'}">Schema Settings</a>
+                    </li>
+
+                    <li class="nav-item" [routerLinkActive]="['link-active']">
+                        <a class="nav-link " [routerLink]="['/timeline']" [queryParams]="{new: 'true'}">Create New Checklist</a>
+                    </li>
+                    <li class="nav-item" [routerLinkActive]="['link-active']">
+                        <a class="nav-link" [routerLink]="['/fetch-data']">Account Settings</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<mat-sidenav-container class="sidenav-container" [ngClass]="{'active': opened === true}" (click)="close($event)" [style.marginTop.px]="mobileQuery.matches ? 73 : 0">
+    <mat-sidenav #sidenav [fixedInViewport]="true" [(opened)]="opened" autosize fixedTopGap="73" mode="side" (keydown.escape)="close($event)">
+        <mat-nav-list>
+            <mat-list-item *ngFor="let nav of fillerNav">
+                <a class="px-3 py-1" *ngIf="nav.link&&!nav.SubList" routerLink="/{{nav.link}}" (click)="close($event)">
+                    <mat-icon>{{nav.icon}}</mat-icon>
+                    {{nav.text}}
+                </a>
+
+                <a class="px-3 py-1" href="#" *ngIf="!nav.link&&nav.SubList" (click)="changenavigation($event, nav)">
+                    <mat-icon>{{nav.icon}}</mat-icon>
+                    {{nav.text}}
+                    <mat-icon class="expandicon">expand_more</mat-icon>
+                </a>
+                <div *ngIf="nav.SubList&&nav.showsubmenu" class="sublist px-3">
+                    <mat-list-item *ngFor="let subnav of nav.SubList">
+                        <a class="px-3 py-1" routerLink="/{{subnav.link}}" (click)="sidenav.close()">
+                            <mat-icon>{{subnav.icon}}</mat-icon>
+                            {{subnav.text}}
+                        </a>
+                    </mat-list-item>
+                </div>
+            </mat-list-item>
+        </mat-nav-list>
+    </mat-sidenav>
+</mat-sidenav-container>

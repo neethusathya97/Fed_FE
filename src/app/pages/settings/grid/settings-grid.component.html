@@ -1,0 +1,137 @@
+<div class="col-12  p-3">
+    <div class="col-12  p-3">
+        <div class="row pt-3">
+            <div class="col-12 rowlist pt-3">
+
+                <div class="row rowhead  align-items-center font-weight-bold">
+                    <div class="col checkBoxColumn" *ngIf="rows.length > 0">
+                        <mat-checkbox class="checkrow" (change)="gridCheckAll()" [(ngModel)]="GridCheckAll"></mat-checkbox>
+                    </div>
+                    <div class="sortorderbtn col invisible"><i class="material-icons">
+    reorder
+    </i></div>
+
+                    <div class="col p-3">Scheme Name</div>
+                    <div class="col p-3">Status</div>
+                    <div class="col p-3">Valid From</div>
+                    <div class="col p-3">Valid Till</div>
+
+                    <div class="col p-3 hidden">U Id</div>
+                    <div class="col actions" *ngIf="rows.length > 0">
+                        <span class="p-3 " *ngIf="!GridCheckAnItem">Actions</span>
+                        <span class="" *ngIf="GridCheckAnItem">
+    <button mat-mini-fab (click)="deleteSelectedItems()"  class="deleterows actionbtn" color="warn" matBadge="{{GridCheckItemCount}}" matBadgePosition="above after"  matBadgeColor="warn">
+        <mat-icon >delete</mat-icon>
+      </button>
+    </span>
+                    </div>
+                </div>
+                <div class="col-12 noresultrow text-center p-3" *ngIf="rows.length == 0">
+                    No rows Found
+                </div>
+                <form (ngSubmit)="saverow(item)" class="row sortlistitem align-items-center" *ngFor="let item of rows">
+
+                    <div class="col px-3 checkBoxColumn d-none d-md-block" *ngIf="rows.length > 0">
+                        <mat-checkbox name="IsChecked" class="checkrow" (change)="checkAnItem()" [(ngModel)]="item.IsChecked"></mat-checkbox>
+                    </div>
+                    <div class="sortorderbtn col  d-none d-md-block"><i class="material-icons">
+    reorder
+    </i></div>
+
+                    <div class="col-12 col-sm-6 col-md p-3" *ngIf="item.IsEdit">
+                        <mat-form-field class="col-12">
+                            <mat-label>Title</mat-label>
+                            <mat-select matInput required (selectionChange)="rowchanges(item)" [(ngModel)]="item.TitleModel" placeholder="Title" name="Title" #Title="ngModel" [ngClass]="{ 'is-invalid': Title.invalid }" [compareWith]="compareItems">
+                                <mat-option *ngFor="let surnameitem of surnamelist" [value]="surnameitem">
+                                    {{surnameitem.Title}}
+                                </mat-option>
+                            </mat-select>
+                            <mat-error *ngIf="Title.invalid">
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="col p-3" *ngIf="!item.IsEdit">
+                        <span *ngIf="item.TitleModel&&item.TitleModel.Title">{{item.TitleModel.Title}}</span>
+                    </div>
+
+                    <div class="col-12 col-sm-6 col-md p-3" *ngIf="item.IsEdit">
+                        <mat-form-field class="col-12">
+                            <mat-label>Full Name</mat-label>
+                            <input matInput required type="text" (change)="rowchanges(item)" (keyup)="rowchanges(item)" [(ngModel)]="item.FullName" placeholder="Full Name" name="FullName" #FullName="ngModel" #FullName="ngModel" [ngClass]="{ 'is-invalid': FullName.invalid }" />
+                            <mat-error *ngIf="FullName.invalid">
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="col p-3" *ngIf="!item.IsEdit">{{item.FullName}}</div>
+
+                    <div class="col-12 col-sm-6 col-md p-3" *ngIf="item.IsEdit">
+                        <mat-form-field class="col-12">
+                            <mat-label>Email</mat-label>
+                            <input matInput required type="text" (change)="rowchanges(item)" (keyup)="rowchanges(item)" [(ngModel)]="item.Email" placeholder="Email" name="Email" #Email="ngModel" #Email="ngModel" [ngClass]="{ 'is-invalid': Email.invalid }" />
+                            <mat-error *ngIf="Email.invalid">
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="col p-3" *ngIf="!item.IsEdit">{{item.Email}}</div>
+
+                    <div class="col-12 col-sm-6 col-md p-3" *ngIf="item.IsEdit">
+                        <mat-form-field class="col-12">
+                            <mat-label>Mobile</mat-label>
+                            <input matInput required type="text" (change)="rowchanges(item)" (keyup)="rowchanges(item)" [(ngModel)]="item.Mobile" placeholder="Mobile" name="Mobile" #Mobile="ngModel" #Mobile="ngModel" [ngClass]="{ 'is-invalid': Mobile.invalid }" />
+                            <mat-error *ngIf="Mobile.invalid">
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="col p-3" *ngIf="!item.IsEdit">{{item.Mobile}}</div>
+
+                    <div class="col-12 col-sm-6 col-md p-3" *ngIf="item.IsEdit">
+                        <mat-form-field class="col-12">
+                            <mat-label>Dob</mat-label>
+                            <input matInput required type="text" (change)="rowchanges(item)" (keyup)="rowchanges(item)" [(ngModel)]="item.Dob" placeholder="Dob" name="Dob" #Dob="ngModel" #Dob="ngModel" [ngClass]="{ 'is-invalid': Dob.invalid }" />
+                            <mat-error *ngIf="Dob.invalid">
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="col p-3" *ngIf="!item.IsEdit">{{item.Dob}}</div>
+
+                    <div class="col-12 col-sm-6 col-md p-3" *ngIf="item.IsEdit">
+                        <mat-form-field class="col-12">
+                            <mat-label>Status</mat-label>
+                            <mat-select matInput required (selectionChange)="rowchanges(item)" [(ngModel)]="item.StatusModel" placeholder="Status" name="Status" #Status="ngModel" [ngClass]="{ 'is-invalid': Status.invalid }" [compareWith]="compareItems">
+                                <mat-option *ngFor="let statusitem of statuslist" [value]="statusitem">
+                                    {{statusitem.Title}}
+                                </mat-option>
+                            </mat-select>
+                            <mat-error *ngIf="Status.invalid">
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="col p-3" *ngIf="!item.IsEdit">
+                        <span *ngIf="item.StatusModel&&item.StatusModel.Title">{{item.StatusModel.Title}}</span>
+                    </div>
+                    <div class="col-12 col-sm-6 col-md p-3 hidden">{{item.UId}}</div>
+                    <div class="col actions justify-content-end">
+                        <button type="button" mat-icon-button class="editrow actionbtn  p-1" *ngIf="!item.IsEdit" color="primary" (click)="editrow(item)">
+                                    <mat-icon>edit</mat-icon>
+                                  </button>
+                        <button mat-icon-button class="deleterow actionbtn  p-1" *ngIf="!item.IsEdit" color="warn" (click)="deleterow(item)">
+        <mat-icon>delete_outline</mat-icon>
+      </button>
+
+                        <button type="button" mat-icon-button class="canceledit actionbtn p-1" *ngIf="item.IsEdit" color="warn" (click)="cancelrow(item)">
+        <mat-icon>highlight_off</mat-icon>
+      </button>
+                        <button type="button" mat-icon-button class="nosaverow actionbtn p-1" *ngIf="item.IsEdit&&!item.IsChanged" color="success">
+                                    <mat-icon>check_circle_outline</mat-icon>
+                                  </button>
+
+                        <button type="submit" mat-icon-button class="saverow actionbtn p-1" *ngIf="item.IsEdit&&item.IsChanged" color="success">
+                                    <mat-icon>check_circle_outline</mat-icon>
+                                  </button>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

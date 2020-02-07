@@ -1,0 +1,69 @@
+<form (ngSubmit)="insert(insertForm, model)" #insertForm="ngForm" novalidate>
+
+    <div class="col-12  p-3">
+        <div class="col-12 p-3 my-3 h2 text-capitalize border-bottom border-primary">Scheme Settings
+            <button color="green" type="button" mat-raised-button class="btn-success shownewbox btn btn-raised" (click)="toggleNewBox()" [ngClass]="{ 'closenewbox': newBoxVisibility }">
+      <span class="addcloseicon" >&#10006;</span>
+      <span *ngIf="newBoxVisibility"> Hide</span><span *ngIf="!newBoxVisibility"> New</span></button>
+        </div>
+        <div class="col-12 shadow-sm " *ngIf="newBoxVisibility">
+            <div class="row equal">
+                <div class="col verticalcontent newitemlabel shadow-sm text-center p-3 bg-info text-white">New</div>
+                <div class="col  p-3">
+
+                    <mat-form-field class="col-12 col-sm-6 col-md-4 col-lg-3">
+                        <mat-label>Scheme Name</mat-label>
+                        <mat-select matInput required type="number" [(ngModel)]="model.SchemeModel" placeholder="Scheme Name" name="SchemeName" #Scheme="ngModel" [ngClass]="{ 'is-invalid': insertForm.submitted && Scheme.invalid }"   [compareWith]="compareItems" >
+                            <mat-option *ngFor="let schemeitem of schemelist" [value]="schemeitem">
+                                {{schemeitem.schemeName}}</mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="Scheme.invalid" >
+                        </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field class="col-12 col-sm-6 col-md-4 col-lg-3">
+                        <mat-label>Scheme Status</mat-label>
+                        <mat-select matInput required type="number" [(ngModel)]="model.StatusModel" placeholder="Scheme Status" name="SchemeStatus" #Status="ngModel" [ngClass]="{ 'is-invalid': insertForm.submitted && Status.invalid }" [compareWith]="compareItems">
+                            <mat-option  *ngFor="let statusitem of statuslist" [value]="statusitem" >
+                                {{statusitem.title}}
+                            </mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="Status.invalid">
+                        </mat-error>
+
+                    </mat-form-field>
+                    <mat-form-field class="col-12 col-sm-6 col-md-4 col-lg-3">
+                        <mat-label>Valid From</mat-label>
+                        <input matInput required type="text" [matDatepicker]="StartDatePicker" [(ngModel)]="model.StartDateStr" placeholder="Valid From" name="StartDateStr" #StartDateStr="ngModel" [ngClass]="{ 'is-invalid': insertForm.submitted && StartDateStr.invalid }" />
+                        <mat-datepicker-toggle matSuffix [for]="StartDatePicker"></mat-datepicker-toggle>
+                        <mat-datepicker #StartDatePicker></mat-datepicker>
+                        <mat-error *ngIf="StartDateStr.invalid">
+                        </mat-error>
+                    </mat-form-field>
+                    <mat-form-field class="col-12 col-sm-6 col-md-4 col-lg-3">
+                        <mat-label>Valid Till</mat-label>
+                        <input matInput required type="text" [matDatepicker]="EndDatePicker" [(ngModel)]="model.EndDateStr" placeholder="Valid Till" name="EndDateStr" #EndDateStr="ngModel" [ngClass]="{ 'is-invalid': insertForm.submitted && EndDateStr.invalid }" />
+                        <mat-datepicker-toggle matSuffix [for]="EndDatePicker"></mat-datepicker-toggle>
+                        <mat-datepicker #EndDatePicker></mat-datepicker>
+                        <mat-error *ngIf="EndDateStr.invalid">
+                        </mat-error>
+                    </mat-form-field>
+
+
+
+
+
+
+                    <div class="hidden">
+                        <input type="hidden" [(ngModel)]="model.UId" name="UId" />
+                    </div>
+
+
+                    <div class="col-12 float-left">
+                        <button class="float-right" type="submit" mat-raised-button color="primary" [ngClass]="{ 'mat-danger': insertForm.submitted }"><fa-icon [icon]="faPlus"></fa-icon>Add Scheme</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

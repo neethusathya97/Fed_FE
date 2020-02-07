@@ -1,0 +1,124 @@
+a.navbar-brand {
+  white-space: normal;
+  text-align: center;
+  word-break: break-all;
+}
+
+html {
+  font-size: 14px;
+}
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.box-shadow {
+  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+.navbar {
+    z-index: 9999999;
+   background-color: #3f51b5 !important;
+}
+.navbar a{
+  color: #fff;
+}
+.navbar{
+      box-shadow: 0 3px 5px -1px rgba(0,0,0,.2), 0 6px 10px 0 rgba(0,0,0,.14), 0 1px 18px 0 rgba(0,0,0,.12);
+}
+
+.navbar-brand img{
+  width: 50px;
+  top: -3px;
+  position: relative;
+}
+.mat-icon{
+  
+  line-height: 44px;
+}
+
+.mat-list-item{
+  background-color:white;
+}
+.mat-list-item .mat-icon{
+  min-width:30px;
+}
+.mat-list-item a{
+  transition:1s all;
+   border-left: 3px solid rgb(255, 255, 255);
+}
+.mat-list-item a:focus,.mat-list-item a:hover{
+   border-left: 3px solid rgb(34, 142, 229);
+    color: #02030b;
+    background-color:#ededed;
+}
+ 
+.mat-list-item a{
+  width: 100%;
+  display: flex;
+  line-height: 44px;
+  padding-right: 60px !important;
+  position: relative;
+}
+.mat-list-item .mat-icon {
+    color: #3a3a3a;
+}
+
+.mat-list-item a:hover .mat-icon {
+    color: #4f4c4c;
+}
+.mat-nav-list .mat-list-item:focus a, .mat-nav-list .mat-list-item:hover a{
+    color: #000000;
+}
+
+.sublist{
+  float: left;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 0px 0px;
+   
+    padding-right: 0px !important;
+  
+}
+
+.mat-drawer-container{
+  overflow: visible;
+  z-index: 9999999;
+}
+mat-sidenav {
+}
+.mat-drawer-container.active {
+  background-color: rgba(72, 72, 72, 0.12156862745098039);
+  width: 100%;
+  height: 100%;
+  position: fixed;
+}
+.sublist a{
+  color:#464646 !Important;
+}
+.sublist a:hover{
+ color: #010105 !Important;
+}
+.mat-drawer-content{
+  z-index: -1;
+}
+mat-icon.expandicon {
+  padding: 2px;
+  background-color: rgba(233, 233, 233, 0.12941176470588237);
+  color: #828181 !important;
+  
+  height: auto;
+  width: 40px;
+  text-align: center;
+  position: absolute;
+  right: 0px;
+  top: 0px;
+    bottom: 0px;
+}
+.mat-list-item a:hover mat-icon.expandicon {
+  background-color: rgba(29, 29, 29, 0.16);
+}
+.mat-drawer-content {
+  cursor: pointer;
+}

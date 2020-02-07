@@ -1,0 +1,35 @@
+<form (ngSubmit)="insert(insertForm, model)" #insertForm="ngForm" novalidate>
+
+<div class="col-12  p-3">
+<div class="col-12 p-3 my-3 h2 text-capitalize border-bottom border-primary">Manage decision
+  <button color="green" type="button" mat-raised-button class="btn-success shownewbox btn btn-raised" (click)="toggleNewBox()" 
+  [ngClass]="{ 'closenewbox': newBoxVisibility }">
+  <span class="addcloseicon" >&#10006;</span> 
+  <span *ngIf="newBoxVisibility"> Hide</span><span *ngIf="!newBoxVisibility"> New</span></button>
+  </div>
+<div class="col-12 shadow-sm " *ngIf="newBoxVisibility">
+<div class="row equal">
+<div class="col verticalcontent newitemlabel shadow-sm text-center p-3 bg-info text-white">New</div>
+<div class="col  p-3">
+
+<mat-form-field class="col-12 col-sm-6 col-md-4 col-lg-3">
+<mat-label>Title</mat-label>
+<input matInput required type="text" 
+ [(ngModel)]="model.Title" placeholder="Title" name="Title"
+ #Title="ngModel" [ngClass]="{ 'is-invalid': insertForm.submitted && Title.invalid }" />
+<mat-error *ngIf="Title.invalid">
+</mat-error>
+</mat-form-field>
+
+<div class="hidden">
+<input type="hidden"  [(ngModel)]="model.DecisionId" name="DecisionId" />
+</div>
+
+ <div class="col-12 float-left">
+ <button class="float-right" type="submit" mat-raised-button color="primary" [ngClass]="{ 'mat-danger': insertForm.submitted }" ><fa-icon [icon]="faPlus"></fa-icon> Create new decision</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</form>

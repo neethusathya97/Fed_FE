@@ -1,0 +1,77 @@
+<form (ngSubmit)="insert(insertForm, model)" #insertForm="ngForm" novalidate>
+
+    <div class="col-12  p-3">
+        <div class="col-12 p-3 my-3 h2 text-capitalize border-bottom border-primary">Manage user
+            <button color="green" type="button" mat-raised-button class="btn-success shownewbox btn btn-raised" (click)="toggleNewBox()" [ngClass]="{ 'closenewbox': newBoxVisibility }">
+  <span class="addcloseicon" >&#10006;</span> 
+  <span *ngIf="newBoxVisibility"> Hide</span><span *ngIf="!newBoxVisibility"> New</span></button>
+        </div>
+        <div class="col-12 shadow-sm " *ngIf="newBoxVisibility">
+            <div class="row equal">
+                <div class="col verticalcontent newitemlabel shadow-sm text-center p-3 bg-info text-white">New</div>
+                <div class="col  p-3">
+
+                    <mat-form-field class="col-12 col-sm-6 col-md-4 col-lg-3">
+                        <mat-label>Title</mat-label>
+                        <mat-select matInput required type="number" [(ngModel)]="model.TitleModel" placeholder="Title" name="Title" #Title="ngModel" [ngClass]="{ 'is-invalid': insertForm.submitted && Title.invalid }" [compareWith]="compareItems">
+                            <mat-option *ngFor="let surnameitem of surnamelist" [value]="surnameitem">
+                                {{surnameitem.Title}}
+                            </mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="Title.invalid">
+                        </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field class="col-12 col-sm-6 col-md-4 col-lg-3">
+                        <mat-label>Full Name</mat-label>
+                        <input matInput required type="text" [(ngModel)]="model.FullName" placeholder="Full Name" name="FullName" #FullName="ngModel" [ngClass]="{ 'is-invalid': insertForm.submitted && FullName.invalid }" />
+                        <mat-error *ngIf="FullName.invalid">
+                        </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field class="col-12 col-sm-6 col-md-4 col-lg-3">
+                        <mat-label>Email</mat-label>
+                        <input matInput type="text" [(ngModel)]="model.Email" placeholder="Email" name="Email" #Email="ngModel" [ngClass]="{ 'is-invalid': insertForm.submitted && Email.invalid }" />
+                        <mat-error *ngIf="Email.invalid">
+                        </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field class="col-12 col-sm-6 col-md-4 col-lg-3">
+                        <mat-label>Mobile</mat-label>
+                        <input matInput type="text" [(ngModel)]="model.Mobile" placeholder="Mobile" name="Mobile" #Mobile="ngModel" [ngClass]="{ 'is-invalid': insertForm.submitted && Mobile.invalid }" />
+                        <mat-error *ngIf="Mobile.invalid">
+                        </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field class="col-12 col-sm-6 col-md-4 col-lg-3">
+                        <mat-label>Dob</mat-label>
+                        <input matInput type="text" [matDatepicker]="DobPicker" [(ngModel)]="model.DobString" placeholder="Dob" name="DobString" #DobString="ngModel" [ngClass]="{ 'is-invalid': insertForm.submitted && DobString.invalid }" />
+                        <mat-datepicker-toggle matSuffix [for]="DobPicker"></mat-datepicker-toggle>
+                        <mat-datepicker #DobPicker></mat-datepicker>
+                        <mat-error *ngIf="DobString.invalid">
+                        </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field class="col-12 col-sm-6 col-md-4 col-lg-3">
+                        <mat-label>Status</mat-label>
+                        <mat-select matInput required type="number" [(ngModel)]="model.StatusModel" placeholder="Status" name="Status" #Status="ngModel" [ngClass]="{ 'is-invalid': insertForm.submitted && Status.invalid }" [compareWith]="compareItems">
+                            <mat-option *ngFor="let statusitem of statuslist" [value]="statusitem">
+                                {{statusitem.Title}}
+                            </mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="Status.invalid">
+                        </mat-error>
+                    </mat-form-field>
+
+                    <div class="hidden">
+                        <input type="hidden" [(ngModel)]="model.UId" name="UId" />
+                    </div>
+
+                    <div class="col-12 float-left">
+                        <button class="float-right" type="submit" mat-raised-button color="primary" [ngClass]="{ 'mat-danger': insertForm.submitted }"><fa-icon [icon]="faPlus"></fa-icon> Create new user</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
