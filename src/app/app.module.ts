@@ -21,6 +21,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatSidenavModule, MatListModule, MatButtonModule, MatRippleModule } from '@angular/material';
 import { SchemedetailsComponent } from './schemedetails/schemedetails.component';
 import { FormComponent } from './schemedetails/form/form.component';
+import { InputRestrictionDirective } from './input-restriction.directive';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,6 +29,9 @@ import { FormComponent } from './schemedetails/form/form.component';
     HomeComponent,
     SchemedetailsComponent,
     FormComponent,
+    InputRestrictionDirective
+
+
     
   ],
   imports: [

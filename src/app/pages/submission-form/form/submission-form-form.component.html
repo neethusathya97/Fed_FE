@@ -1,53 +1,53 @@
-<form (ngSubmit)="insert(insertForm, model)" #insertForm="ngForm" novalidate>
+<div class="col-12  p-3">
+    <div class="col-12 p-3 my-3 h2 text-capitalize border-bottom border-primary">Education Loan Scheme
+        <button color="green" type="button" mat-raised-button class="btn-success shownewbox btn btn-raised" (click)="toggleNewBox()" [ngClass]="{ 'closenewbox': newBoxVisibility }">
+      <span class="addcloseicon" >&#10006;</span> 
+      <span *ngIf="newBoxVisibility"> Hide</span><span *ngIf="!newBoxVisibility"> New</span></button>
+    </div>
+    <div class="col-12 shadow-sm " *ngIf="newBoxVisibility">
+        <div class="row equal">
+            <div class="col verticalcontent newitemlabel shadow-sm text-center p-3 bg-info text-white">New</div>
+            <div class="col  p-3">
 
-    <div class="col-12  p-3">
-        <div class="col-12 p-3 my-3 h2 text-capitalize border-bottom border-primary">Manage submission form
-            <button color="green" type="button" mat-raised-button class="btn-success shownewbox btn btn-raised" (click)="toggleNewBox()" [ngClass]="{ 'closenewbox': newBoxVisibility }">
-  <span class="addcloseicon" >&#10006;</span> 
-  <span *ngIf="newBoxVisibility"> Hide</span><span *ngIf="!newBoxVisibility"> New</span></button>
-        </div>
-        <div class="col-12 shadow-sm " *ngIf="newBoxVisibility">
-            <div class="row equal">
-                <div class="col verticalcontent newitemlabel shadow-sm text-center p-3 bg-info text-white">New</div>
-                <div class="col  p-3">
+                <mat-form-field class="col-12 col-sm-6 col-md-4 col-lg-3">
+                    <mat-label>Scheme Name</mat-label>
+                    <mat-select matInput required type="number" [(ngModel)]="selectedItem" placeholder="Select Scheme" name="Scheme" (ngModelChange)="onChange($event)">
+                        <mat-option *ngFor="let schemeitem of schemelist" [value]="schemeitem.value"> {{schemeitem.viewValue}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
 
-                    <mat-form-field class="col-12 col-sm-6 col-md-4 col-lg-3">
-                        <mat-label>Period</mat-label>
-                        <input matInput required type="text" [(ngModel)]="model.PeriodString" placeholder="Period" name="PeriodString" #PeriodString="ngModel" [ngClass]="{ 'is-invalid': insertForm.submitted && PeriodString.invalid }" />
-                        <mat-error *ngIf="PeriodString.invalid">
-                        </mat-error>
-                    </mat-form-field>
-
-                    <mat-form-field class="col-12 col-sm-6 col-md-4 col-lg-3">
-                        <mat-label>Bank Code</mat-label>
-                        <input matInput required type="number" [(ngModel)]="model.BankCode" placeholder="Bank Code" name="BankCode" #BankCode="ngModel" [ngClass]="{ 'is-invalid': insertForm.submitted && BankCode.invalid }" />
-                        <mat-error *ngIf="BankCode.invalid">
-                        </mat-error>
-                    </mat-form-field>
-
-                    <mat-form-field class="col-12 col-sm-6 col-md-4 col-lg-3">
-                        <mat-label>Branch Code</mat-label>
-                        <input matInput required type="number" [(ngModel)]="model.BranchCode" placeholder="Branch Code" name="BranchCode" #BranchCode="ngModel" [ngClass]="{ 'is-invalid': insertForm.submitted && BranchCode.invalid }" />
-                        <mat-error *ngIf="BranchCode.invalid">
-                        </mat-error>
-                    </mat-form-field>
-
-                    <mat-form-field class="col-12 col-sm-6 col-md-4 col-lg-3">
-                        <mat-label>Branch I F S C Code</mat-label>
-                        <input matInput required type="number" [(ngModel)]="model.BranchIFSCCode" placeholder="Branch I F S C Code" name="BranchIFSCCode" #BranchIFSCCode="ngModel" [ngClass]="{ 'is-invalid': insertForm.submitted && BranchIFSCCode.invalid }" />
-                        <mat-error *ngIf="BranchIFSCCode.invalid">
-                        </mat-error>
-                    </mat-form-field>
-
-                    <div class="hidden">
-                        <input type="hidden" [(ngModel)]="model.SubmissionId" name="SubmissionId" />
-                    </div>
-
-                    <div class="col-12 float-left">
-                        <button class="float-right" type="submit" mat-raised-button color="primary" [ngClass]="{ 'mat-danger': insertForm.submitted }"><fa-icon [icon]="faPlus"></fa-icon> Create new submission form</button>
-                    </div>
-                </div>
             </div>
+
         </div>
     </div>
-</form>
+
+    <div *ngIf="newSchemeVisibility">
+        <ng-container [ngSwitch]="true">
+            <div *ngSwitchCase="selectedItem === 0">
+                <div class="col-12 p-3">
+                    <app-obc-form> </app-obc-form>
+                </div>
+            </div>
+
+            <div *ngSwitchCase="selectedItem == 1">
+                <app-ebc-form> </app-ebc-form>
+            </div>
+
+            <div *ngSwitchCase="selectedItem == 2">
+                <div class="col-12 p-3">
+                    <app-csis-form> </app-csis-form>
+                </div>
+            </div>
+
+            <div *ngSwitchCase="selectedItem == 3">
+                <app-padho-form> </app-padho-form>
+            </div>
+
+            <!-- <div *ngSwitchDefault>
+  <app-padho-form> </app-padho-form>
+ </div> -->
+
+        </ng-container>
+    </div>
+</div>

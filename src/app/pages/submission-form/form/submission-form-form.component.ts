@@ -5,6 +5,18 @@ import { SubmissionFormModel } from '../../../model/submission-form/submission-f
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { NgForm } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import {Router} from '@angular/router';
+import { ObcformComponent} from  '../obc/obc-form.component';
+import { EbcformComponent} from '../ebc/ebc-form.component';
+import { CsisformComponent} from '../csis/csis-form.component';
+import { PadhoformComponent} from '../padho/padho-form.component';
+
+//  /submission-form/form/obc-form.component';
+
+interface schemeitem{
+    value:string;
+    viewValue:string;
+}
 //// region CustomCodeBlockImport#
 
 //// endregion CustomCodeBlockImport#
@@ -15,18 +27,58 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrls: ['.././submission-form.component.css']
 })
 
+
 export class SubmissionFormFormComponent extends SubmissionFormBaseComponent implements OnInit {
+   
     faPlus = faPlus;
     insertSubmitted = false;
     newBoxVisibility = false;
+    newSchemeVisibility = false;
     @Output() change = new EventEmitter();
-    constructor(private snackBar: MatSnackBar, protected http: HttpClient,
+
+    selectedItem:string=" ";
+    schemelist:schemeitem[]=[
+        {value:'0',viewValue:'OBC'},
+        {value:'1',viewValue:'EBC'},
+        {value:'2',viewValue:'CSIS'},
+        {value:'3',viewValue:'PP'}
+    ];
+    onChange (newValue){
+        console.log(newValue);
+        this.selectedItem=newValue;
+        debugger;
+        if (parseInt(newValue) >= 0)
+        {
+            this.newSchemeVisibility = true;
+        }
+        else 
+        this.newSchemeVisibility = false;
+        // if(this.selectedItem =='0')
+        //  {
+        //      this.router    .navigate(['/obc']);
+        //  }
+        //  else if (this.selectedItem =='1')
+        //  {
+        //      this.router.navigate(['ebc']);
+        // }
+        // else if (this.selectedItem =='2')
+        // {
+        //     this.router.navigate(['csis']);
+        // }
+        // else if (this.selectedItem =='3')
+        // {
+        //     this.router.navigate(['padho']);
+        // }
+    }
+
+    constructor(private snackBar: MatSnackBar, protected http: HttpClient,private router:Router)
     //// region CustomCodeBlockConstructorItems#
 
     //// endregion CustomCodeBlockConstructorItems#
-    ) {
+     {
         super(http);
     }
+    
     model: SubmissionFormModel;
     ngOnInit() {
         this.model = new SubmissionFormModel();
@@ -43,6 +95,7 @@ export class SubmissionFormFormComponent extends SubmissionFormBaseComponent imp
 
         //// endregion CustomCodeBlockngOnInit#
     }
+
     toggleNewBox() {
         this.newBoxVisibility = !this.newBoxVisibility;
         this.loadRelationalDropDowns();
@@ -54,10 +107,11 @@ export class SubmissionFormFormComponent extends SubmissionFormBaseComponent imp
             return;
         }
 
-        const savedData = this.service.set(item);
-        this.model = new SubmissionFormModel();
+       const savedData = this.service.set(item);
+        //this.model = new SubmissionFormModel();
         insertForm.resetForm();
-        this.change.emit(this.model);
-        this.snackBar.open('Added', ' ', this.snackBarConfig);
+       // this.change.emit(this.model);
+       this.snackBar.open('Added', ' ', this.snackBarConfig);
     }
+
 }

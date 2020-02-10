@@ -10,7 +10,7 @@ export class SubmissionFormModel {
          Period: Date;
          /// Gets or sets the period string.
          PeriodString: string;
-
+         PeriodStr: string;
          /// number
          /// Gets or sets the bank code.
          BankCode: number;
