@@ -7,6 +7,11 @@ import { SubmissionFormComponent } from './pages/submission-form/submission-form
 import { StatusComponent } from './pages/status/status.component';
 import { DecisionComponent } from './pages/decision/decision.component';
 import { SettingsComponent } from './pages/settings/settings.component';
+import { PadhoformComponent } from './pages/submission-form/padho/padho-form.component';
+import { CsisformComponent } from './pages/submission-form/csis/csis-form.component';
+import { EbcformComponent } from './pages/submission-form/ebc/ebc-form.component';
+import { ObcformComponent} from  './pages/submission-form/obc/obc-form.component';
+
 //// endregion ModuleListImport#
 
 const routes: Routes = [
@@ -18,6 +23,9 @@ const routes: Routes = [
     { path: 'status', component: StatusComponent },
     { path: 'decision', component: DecisionComponent },
     { path: 'settings', component: SettingsComponent },
+    { path: 'padho', component: PadhoformComponent } ,
+    { path: 'csis', component: CsisformComponent } ,
+    { path: 'ebc', component: EbcformComponent },    
     //// endregion ModuleListRoute#
     ];
 

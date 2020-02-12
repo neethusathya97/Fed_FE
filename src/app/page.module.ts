@@ -42,6 +42,11 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
+import { EbcformComponent } from './pages/submission-form/ebc/ebc-form.component';
+import { ObcformComponent } from './pages/submission-form/obc/obc-form.component';
+import { PadhoformComponent } from './pages/submission-form/padho/padho-form.component';
+import { CsisformComponent } from './pages/submission-form/csis/csis-form.component';
+import { CSISBaseComponent } from './pages/submission-form/csis/csis-form-base.component';
 @NgModule({
   imports: [ 
     HttpModule,
@@ -96,7 +101,12 @@ import { HttpClientModule } from '@angular/common/http';
     DecisionBaseComponent,
     SettingsComponent,
     SettingsGridComponent,
-    SettingsFormComponent
+    SettingsFormComponent,
+    EbcformComponent,
+    ObcformComponent,
+    PadhoformComponent,
+    CsisformComponent, 
+    CSISBaseComponent
     //// endregion ModuleListDeclarations#
   ],
   exports: [
@@ -123,7 +133,15 @@ import { HttpClientModule } from '@angular/common/http';
     DecisionBaseComponent,
     SettingsComponent,
     SettingsFormComponent,
-    SettingsGridComponent
+    SettingsGridComponent,
+    EbcformComponent,
+    ObcformComponent,
+    PadhoformComponent,
+    CsisformComponent,
+    CSISBaseComponent
+
+
+   
     //// endregion ModuleListExports#
   ]
 })
