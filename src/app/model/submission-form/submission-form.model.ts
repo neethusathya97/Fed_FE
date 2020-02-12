@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import {CsisModel} from '../csis/csis.model';
 
 // tslint:disable: comment-format
 ////region CustomCodeBlockImport#
@@ -7,21 +8,13 @@ import { Injectable } from '@angular/core';
 export class SubmissionFormModel {
 
          /// Gets or sets the period.
-         Period: Date;
          /// Gets or sets the period string.
-         PeriodString: string;
 
          /// number
          /// Gets or sets the bank code.
-         BankCode: number;
+         schemeType:String;
+         csisModel:CsisModel;
 
-         /// number
-         /// Gets or sets the branch code.
-         BranchCode: number;
-
-         /// number
-         /// Gets or sets the branch i f s c code.
-         BranchIFSCCode: number;
 
          /// foreign field createdby
          CreatedBy: number;

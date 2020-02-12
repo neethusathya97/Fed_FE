@@ -3,6 +3,7 @@ import { ServiceBase } from '../service.base';
 import { SubmissionFormModel } from '../submission-form/submission-form.model';
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { ResponseModel } from '../response.model';
 
 // tslint:disable: comment-format
 ////region CustomCodeBlockImport#
@@ -12,26 +13,24 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class SubmissionFormService extends ServiceBase {
-        getUrl = '/api/submissionformjson/get/';
-        setUrl = '/api/submissionformjson/post/';
-        deleteUrl = '/api/submissionformjson/delete/';
+        controllerUrl   = '/api/Submission';
         onChange: EventEmitter<SubmissionFormModel>;
         constructor(protected http: HttpClient) {
             super();
             this.onChange = new EventEmitter<SubmissionFormModel>();
         }
 
-        get(model: SubmissionFormModel = null): Observable<HttpResponse<SubmissionFormModel[]>> {
-            const rows = this.http.get<HttpResponse<SubmissionFormModel[]>>(this.getUrl);
+        get(model: SubmissionFormModel = null): Observable<SubmissionFormModel[]> {
+            const rows = this.http.get<SubmissionFormModel[]>(this.apiPath+this.controllerUrl);
             return rows;
         }
 
-        set(model: SubmissionFormModel = null): Observable<HttpResponse<SubmissionFormModel>> {
-            return this.http.post<HttpResponse<SubmissionFormModel>>(this.setUrl, model);
+        set(model: SubmissionFormModel = null): Observable<SubmissionFormModel> {
+            return this.http.post<SubmissionFormModel>(this.apiPath+this.controllerUrl, model);
         }
         remove(id: number): Observable<{}> {
-            const url = `${this.deleteUrl}/${id}`;
-            return this.http.delete(this.deleteUrl);
+            const url = `${this.apiPath+this.controllerUrl}/${id}`;
+            return this.http.delete(this.apiPath+this.controllerUrl);
         }
 
 ////region CustomCodeBlockFunctions#
