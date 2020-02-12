@@ -26,8 +26,8 @@ export class SubmissionFormGridComponent extends SubmissionFormBaseComponent imp
     ) {
         super(http);
         this.rows = [];
-        this.service.get().subscribe((x) => {
-                this.rows = x.body;
+        this.service.get().subscribe((x:SubmissionFormModel[]) => {
+                this.rows = x;
         });
     }
     ngOnInit() {
@@ -45,8 +45,8 @@ export class SubmissionFormGridComponent extends SubmissionFormBaseComponent imp
         //// endregion CustomCodeBlockngOnInit#
     }
     ngOnChanges() {
-        this.service.get().subscribe((x) => {
-                this.rows = x.body;
+        this.service.get().subscribe((x:SubmissionFormModel[]) => {
+                this.rows = x;
         });
     }
     gridCheckAll() {
@@ -81,8 +81,8 @@ export class SubmissionFormGridComponent extends SubmissionFormBaseComponent imp
                 const removeData = this.service.remove(this.rows[i].SubmissionId);
             }
         }
-         this.service.get().subscribe((x) => {
-                this.rows = x.body;
+         this.service.get().subscribe((x:SubmissionFormModel[]) => {
+                this.rows = x;
         });
         this.snackBar.open('Deleted', ' ', this.snackBarConfig);
     }
@@ -104,7 +104,7 @@ export class SubmissionFormGridComponent extends SubmissionFormBaseComponent imp
     deleterow(item: SubmissionFormModel) {
       const removeData = this.service.remove(item.SubmissionId);
       this.service.get().subscribe((x) => {
-                this.rows = x.body;
+                this.rows = x;
         });
       this.snackBar.open('Deleted', ' ', this.snackBarConfig);
     }
@@ -113,7 +113,7 @@ export class SubmissionFormGridComponent extends SubmissionFormBaseComponent imp
         item.IsChanged = false;
         const savedData = this.service.set(item);
         this.service.get().subscribe((x) => {
-                this.rows = x.body;
+                this.rows = x;
         });
         this.snackBar.open('Saved', ' ', this.snackBarConfig);
     }
