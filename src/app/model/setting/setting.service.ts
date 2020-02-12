@@ -23,6 +23,7 @@ export class SettingService extends ServiceBase {
         }
 
         set(model: SettingModel = null): Observable<SettingModel> {
+          debugger;
             return this.http.post<SettingModel>(this.apiPath+this.controllerUrl, model);
         }
         remove(id: number): Observable<{}> {
