@@ -3,6 +3,8 @@ import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { HttpClient } from '@angular/common/http';
 import { SubmissionFormModel } from '../../model/submission-form/submission-form.model';
 import { SubmissionFormService } from '../../model/submission-form/submission-form.service';
+import { CsisModel } from '../../model/csis/csis.model';
+
 //// region CustomCodeBlockImport#
 
 //// endregion CustomCodeBlockImport#
@@ -17,6 +19,7 @@ export class SubmissionFormBaseComponent {
     loadedRelationalDropDowns = false;
     snackBarConfig: any;
     service: SubmissionFormService;
+    csislist: CsisModel[];
     //// region CustomCodeBlockVariables#
 
     //// endregion CustomCodeBlockVariables#
