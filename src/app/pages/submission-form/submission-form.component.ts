@@ -18,7 +18,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 
 export class SubmissionFormComponent extends SubmissionFormBaseComponent implements OnInit {
- 
+  formChangesCounter = 0;
   faPlus = faPlus;
   insertSubmitted = false;
   @Output() change = new EventEmitter();
@@ -30,5 +30,9 @@ export class SubmissionFormComponent extends SubmissionFormBaseComponent impleme
           super(http);
       }
       model: CsisModel;
-    ngOnInit(){}
+    ngOnInit()
+    {}
+      formChange(){
+        this.formChangesCounter++;
+      }
 }

@@ -35,28 +35,31 @@ import {SubmissionFormModel} from '../../../model/submission-form/submission-for
       ngOnInit(){
         this.model = new CsisModel();
         this.model.BankCodeStr = "The Federal Bank";
-        
+        this.model.schemeType ="C";
+        this.model.BankCode= 49;
         this.SubmissionForm = new SubmissionFormModel();
         this.SubmissionForm.csisModel = new CsisModel();
       }
 
       insert(insertForm: NgForm, item: CsisModel) {
-
+       
         this.insertSubmitted = true;
-    
+        
         // // var dt = new Date(item.EndDateString);
         // // let datend = [dt.getFullYear(), ('0' + (dt.getMonth() + 1)).slice(-2), ('01').slice(-2)].join('-');
          
       
         this.SubmissionForm.csisModel =  item;
-       debugger;
+   
     
         if (insertForm.invalid) {
             return;
         }
     
         this.service.set(this.SubmissionForm).subscribe(x=>{
+      
           this.model = new CsisModel();
+          // debugger;
           insertForm.resetForm();
           this.change.emit(this.model);
           this.snackBar.open('Added', ' ', this.snackBarConfig);

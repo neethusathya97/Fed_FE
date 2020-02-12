@@ -30,6 +30,7 @@ import { SubmissionFormService } from '../../../model/submission-form/submission
                 panelClass: 'success'
             };
             this.service = new SubmissionFormService(this.http);   
+            debugger;
     }
     // loadRelationalDropDowns() {
     //     if (!this.loadedRelationalDropDowns) {

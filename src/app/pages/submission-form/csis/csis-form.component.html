@@ -4,12 +4,21 @@
             <div class="col  p-3">
                 <mat-form-field class="col-12 col-sm-6 col-md-4 col-lg-3">
                     <mat-label>Period</mat-label>
-                    <input matInput required type="text" [(ngModel)]="model.PeriodStr" value="model.PeriodStr" placeholder="Period-YYYYMM" name="PeriodStr" #PeriodStr="ngModel" [ngClass]="{ 'is-invalid': insertForm.submitted && PeriodStr.invalid }" pattern="^[0-9]+$" maxlength="6" />
+                    <input matInput required type="text" [(ngModel)]="model.PeriodStr" value="model.PeriodStr" placeholder="Period-YYYYMM" name="PeriodStr" #PeriodStr="ngModel" autocomplete="off" [ngClass]="{ 'is-invalid': insertForm.submitted && PeriodStr.invalid }" pattern="^[0-9]+$"
+                        minlength=6 maxlength=6 />
+                    <mat-hint>
+                        Hint-<b>YYYYMM</b> Format
+                    </mat-hint>
                     <mat-error *ngIf="PeriodStr.invalid">
                     </mat-error>
                     <mat-error *ngIf="PeriodStr.errors?.pattern">
-                      You have enter atleast 1 characters
-                     </mat-error>
+                        Match the requested pattern
+                    </mat-error>
+                    <mat-error *ngIf="PeriodStr.errors?.minlength">
+                        Minimum length 6 required
+                    </mat-error>
+
+
                 </mat-form-field>
 
                 <mat-form-field class="col-12 col-sm-6 col-md-4 col-lg-3">
@@ -21,31 +30,48 @@
 
                 <mat-form-field class="col-12 col-sm-6 col-md-4 col-lg-3">
                     <mat-label>Branch code</mat-label>
-                    <input matInput required type="text" [(ngModel)]="model.BranchCode" value="model.BranchCode" placeholder="Branch Code" name="BranchCode" #BranchCode="ngModel" [ngClass]="{ 'is-invalid': insertForm.submitted && BranchCode.invalid }" pattern="^[A-Za-z0-9]+$" />
+                    <input matInput required type="text" [(ngModel)]="model.BranchCode" autocomplete="off" value="model.BranchCode" placeholder="Branch Code" name="BranchCode" #BranchCode="ngModel" [ngClass]="{ 'is-invalid': insertForm.submitted && BranchCode.invalid }"
+                        pattern="^[A-Za-z0-9]+$" minlength=10 maxlength=10 />
                     <mat-error *ngIf="BranchCode.invalid">
                     </mat-error>
                     <mat-error *ngIf="BranchCode.errors?.pattern">
-                      Special Char Nt Allowed.
-                     </mat-error>
+                        Special characters are exempted
+                    </mat-error>
+                    <mat-error *ngIf="BranchCode.errors?.minlength">
+                        Minimum length 10 required
+                    </mat-error>
                 </mat-form-field>
 
                 <mat-form-field class="col-12 col-sm-6 col-md-4 col-lg-3">
                     <mat-label>Branch IFSC Code</mat-label>
-                    <input matInput required type="text" [(ngModel)]="model.BranchIFSCCode" value="model.BranchIFSCCode" placeholder="Branch IFSC Code" name="BranchIFSCCode" #BranchIFSCCode="ngModel" [ngClass]="{ 'is-invalid': insertForm.submitted && BranchIFSCCode.invalid }" maxlength="11" pattern="^[A-Za-z0-9]+$"
-                    />
+                    <input matInput required type="text" [(ngModel)]="model.BranchIFSCCode" value="model.BranchIFSCCode" autocomplete="off" placeholder="Branch IFSC Code" name="BranchIFSCCode" #BranchIFSCCode="ngModel" [ngClass]="{ 'is-invalid': insertForm.submitted && BranchIFSCCode.invalid }"
+                        pattern="^[A-Za-z0-9]+$" minlength=11 maxlength=11 pattern="^[A-Za-z0-9]+$" />
                     <mat-error *ngIf="BranchIFSCCode.invalid">
                     </mat-error>
-                </mat-form-field>
-                <mat-form-field class="col-12 col-sm-6 col-md-4 col-lg-3">
-                    <mat-label>Loan Account number</mat-label>
-                    <input matInput required type="text" [(ngModel)]="model.LoanAccountnumber" value="model.LoanAccountnumber" placeholder="Loan Account Number" name="LoanAccountnumber" #LoanAccountnumber="ngModel" [ngClass]="{ 'is-invalid': insertForm.submitted && LoanAccountnumber.invalid }" max="20"
-                    pattern="^[A-Za-z0-9]+$"    />
-                    <mat-error *ngIf="LoanAccountnumber.invalid">No Special Characters Allowed
+                    <mat-error *ngIf="BranchIFSCCode.errors?.minlength">
+                        Minimum length 11 required
+                    </mat-error>
+                    <mat-error *ngIf="BranchIFSCCode.errors?.pattern">
+                        Special characters are exempted
                     </mat-error>
                 </mat-form-field>
-                <div class="hidden">
+
+
+
+                <mat-form-field class="col-12 col-sm-6 col-md-4 col-lg-3">
+                    <mat-label>Loan Account number</mat-label>
+                    <input matInput required type="text" [(ngModel)]="model.LoanAccountnumber" autocomplete="off" value="model.LoanAccountnumber" placeholder="Loan Account Number" name="LoanAccountnumber" #LoanAccountnumber="ngModel" [ngClass]="{ 'is-invalid': insertForm.submitted && LoanAccountnumber.invalid }"
+                        maxlength="14" minlength="14" pattern="^[A-Za-z0-9]+$" />
+                    <mat-error *ngIf="LoanAccountnumber.invalid">
+                    </mat-error>
+                    <mat-error *ngIf="LoanAccountnumber.errors?.minlength">Use 14 characters
+                    </mat-error>
+                    <mat-error *ngIf="LoanAccountnumber.errors?.pattern"> Special characters are exempted
+                    </mat-error>
+                </mat-form-field>
+                <!-- <div class="hidden">
                     <input type="hidden" [(ngModel)]="model.CLAIM_Id" name="CLAIM_Id" />
-                </div>
+                </div> -->
                 <div class="col-12 float-left">
                     <button class="float-right" type="submit" mat-raised-button color="primary" [ngClass]="{ 'mat-danger': insertForm.submitted }"><fa-icon [icon]="faPlus"></fa-icon> Submit Scheme</button>
                 </div>

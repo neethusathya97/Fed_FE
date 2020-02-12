@@ -13,6 +13,7 @@ export class CsisModel {
          BankCodeStr:String;       
          BranchCode: string; 
          BranchIFSCCode: string;
+         schemeType:string;
          LoanAccountnumber: string;
         
          /// foreign field createdby

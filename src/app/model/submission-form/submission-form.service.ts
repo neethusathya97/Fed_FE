@@ -13,7 +13,7 @@ import { ResponseModel } from '../response.model';
   providedIn: 'root'
 })
 export class SubmissionFormService extends ServiceBase {
-        controllerUrl   = '/api/Submission';
+        controllerUrl   = '/api/Submission/';
         onChange: EventEmitter<SubmissionFormModel>;
         constructor(protected http: HttpClient) {
             super();
@@ -26,6 +26,7 @@ export class SubmissionFormService extends ServiceBase {
         }
 
         set(model: SubmissionFormModel = null): Observable<SubmissionFormModel> {
+            debugger;
             return this.http.post<SubmissionFormModel>(this.apiPath+this.controllerUrl, model);
         }
         remove(id: number): Observable<{}> {
